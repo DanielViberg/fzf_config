@@ -8,9 +8,10 @@ function fvim() {
   selected=$(find ~/ -mindepth 1 -not -path '*/\.*' | fzf)
   if [[ -n $selected ]]; then
     if [[ -f $selected  ]]; then
-        vim "$selected"
+        vim "$selected" -c "cd %:p:h"
     elif [[ -d $selected ]]; then
       cd $selected 
     fi
+    clear
   fi
 }
